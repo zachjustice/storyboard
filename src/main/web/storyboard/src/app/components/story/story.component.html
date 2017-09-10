@@ -1,0 +1,97 @@
+<div class="container">
+
+  <div class="row page-container" >
+    <div class="col">
+
+
+      <!-- display past pages -->
+      <div class="mx-auto w-75 past-page"
+           *ngFor="let decision of decisions;"
+           (click)="turnBack(decision.page)"
+      >
+
+        <!-- display page -->
+        <div class="page-content">{{decision.page.content}}</div>
+        <div class="page-content">What will you do?</div>
+
+        <div class="row">
+          <div class="col-md-1">
+          </div>
+
+          <div class="col">
+            <div *ngFor="let action of decision.page.actions">
+              <div [ngClass]="{'bold': action.id == decision.action.id}">{{action.description}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- create new page -->
+      <div class="mx-auto w-75 page" *ngIf="!currentPage">
+        <div class="row">
+          Continue the story:
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <button class="checkmark" *ngIf="newPageContent | trim" (click)="savePage(newPageContent)"></button>
+          </div>
+
+          <div id="new-page"
+               contenteditable="true"
+               [textContent]="newPageContent"
+               (click)="$event.target.focus()"
+               (input)="newPageContent=$event.target.textContent"
+               placeholder="Write here...">
+          </div>
+        </div>
+      </div>
+
+      <!-- current page -->
+      <div class="mx-auto w-75 page current-page" *ngIf="currentPage">
+
+        <div class="page-content">{{currentPage.content}}</div>
+        <div class="page-content">What will you do?</div>
+
+        <div class="row" id="action-list">
+          <div class="col-md-1">
+          </div>
+
+          <div class="col">
+            <div *ngFor="let action of currentPage.actions">
+              <div class="clickable"
+                   (click)="turnPage(currentPage, action)">
+                {{action.description}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="(currentPage.actions == null || currentPage.actions.length < pageActionLength)">
+          <div class="col-md-1">
+            <button class="checkmark inline"
+                    *ngIf="newActionDescription | trim"
+                    (click)="saveAction(newActionDescription)"></button>
+          </div>
+
+          <div class="col">
+            <div id="new-action"
+                 class="inline"
+                 contenteditable="true"
+                 #newAction
+                 [textContent]="newActionDescription"
+                 (input)="newActionDescription=$event.target.textContent"
+                 (click)="$event.target.focus()"
+                 placeholder="Or add your own action...">
+            </div>
+          </div>
+        </div>
+      </div><!-- end of current page -->
+
+      <!-- For errors -->
+      <div class="mx-auto w-75" #error *ngIf="errorMessage">
+        <b>{{errorMessage}}</b>
+      </div>
+    </div>
+  </div>
+</div>

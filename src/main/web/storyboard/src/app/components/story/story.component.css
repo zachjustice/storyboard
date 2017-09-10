@@ -1,0 +1,82 @@
+
+
+.page-container {
+  padding-top: 5%;
+}
+
+.page-content {
+  padding-bottom: .7em;
+}
+
+#new-page {
+  color: #fff;
+  max-width: 300px;
+}
+
+#new-page:focus {
+  outline: 0 solid transparent;
+}
+
+#new-page[placeholder]:empty:before {
+}
+
+#new-action {
+  min-width: 100px;
+  max-width: 200px;
+}
+
+#new-action:focus {
+  outline: 0 solid transparent;
+}
+
+.past-page {
+  margin-top: 40px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.past-page:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.page {
+  margin-top: 40px;
+}
+
+.current-page {
+  color: #fff !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+
+#action-list {
+}
+
+.checkmark {
+  display: inline-block;
+  position: relative;
+}
+
+.checkmark:after {
+  /*Add another block-level blank space*/
+  content: '';
+  display: block;
+
+  /*Make it a small rectangle so the border will create an L-shape*/
+  width: 9px;
+  height: 18px;
+
+  /*Add a white border on the bottom and left, creating that 'L' */
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+
+  /*Rotate the L 45 degrees to turn it into a checkmark*/
+  transform: rotate(45deg);
+}
+

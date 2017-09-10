@@ -1,0 +1,50 @@
+body {
+  background: black;
+  color: #fff;
+  font-size: 1em;
+}
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  font-style: italic;
+  color: grey;
+}
+
+input, textarea {
+  background: black;
+  color: #fff;
+  border: none;
+  font-style: italic;
+  height: 2rem;
+}
+
+button {
+  background: black;
+  color: #fff;
+  border: none;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+}
+
+a:visited {
+  color: #fff;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.inline {
+  display: inline;
+}
+
+.bold {
+  font-weight: bold;
+}
